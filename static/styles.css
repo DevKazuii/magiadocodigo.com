@@ -1,0 +1,220 @@
+/* Variáveis CSS para facilitar a manutenção e padronização das cores */
+:root {
+    /* Paleta de Cores Mais Vibrante e Moderna */
+    --bg-dark: #1a1a2e; /* Fundo principal escuro, com um toque de cor */
+    --card-bg: #22223b; /* Fundo dos cards/seções, um pouco mais claro que o bg */
+    --accent-color: #e94560; /* Cor de destaque para botões, bordas ao focar */
+    --text-light: #e0e0e0; /* Cor do texto claro */
+    --text-gray: #b0b0b0; /* Cor do texto secundário/subtítulos */
+    --input-bg: #30304a; /* Fundo do input */
+    --border-input: #4a4a6e; /* Borda do input */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Cor da sombra */
+
+    /* Fontes */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Reset Básico para melhor controle */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-dark), #0f0f20); /* Gradiente no fundo */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza todo o conteúdo verticalmente */
+    font-family: var(--font-body); /* Fonte principal do corpo */
+    color: var(--text-light); /* Cor do texto padrão */
+    padding: 20px;
+}
+
+.h1-1 {
+    font-family: var(--font-heading); /* Fonte para o título */
+    color: var(--accent-color); /* Cor de destaque para o título */
+    text-align: center;
+    margin-bottom: 30px; /* Mais espaçamento */
+    font-size: 3em; /* Título maior */
+    letter-spacing: 2px; /* Espaçamento entre letras */
+    text-shadow: 0 0 10px var(--accent-color); /* Sombra mais vibrante */
+    /* Animação simples para o título */
+    animation: fadeInDown 1s ease-out;
+}
+
+.section-1 {
+    background-color: var(--card-bg); /* Fundo da área de conversa */
+    border-radius: 15px; /* Bordas mais arredondadas */
+    box-shadow: 0 8px 16px var(--shadow-color); /* Sombra mais pronunciada */
+    width: 90%; /* Mais largura em telas menores */
+    max-width: 700px; /* Largura máxima controlada */
+    height: 450px; /* Altura um pouco maior */
+    padding: 25px; /* Mais padding interno */
+    display: flex;
+    flex-direction: column; /* Para organizar o conteúdo da IA */
+    overflow-y: auto; /* Rolagem automática se o conteúdo exceder */
+    border: 1px solid var(--border-input); /* Borda sutil */
+    animation: fadeIn 1s ease-out 0.3s forwards; /* Animação com delay */
+    opacity: 0; /* Começa invisível para a animação */
+}
+
+/* Estilização para o conteúdo da IA dentro de section-1 (exemplo: div#ia-output) */
+#ia-output {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    line-height: 2.6; /* Espaçamento entre linhas para melhor leitura */
+    color: var(--text-light); /* Cor do texto da IA */
+    font-size: 1.1em;
+    white-space: pre-wrap; /* Preserva quebras de linha e espaços */
+    word-wrap: break-word; /* Quebra palavras longas */
+    text-align: center;
+}
+
+.main-1 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.section-2 {
+    margin-top: 25px; /* Mais espaçamento do topo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%; /* Mesma largura da section-1 */
+    max-width: 700px; /* Mesma largura máxima */
+    gap: 15px; /* Espaçamento entre o input e o botão */
+}
+
+.input-1 {
+    flex-grow: 1;
+    border: 2px solid var(--border-input);
+    background-color: var(--input-bg);
+    color: var(--text-light);
+    padding: 15px 20px; /* Padding maior para o input */
+    border-radius: 10px;
+    font-size: 1.1em;
+    outline: none;
+    transition: all 0.3s ease; /* Transição para todas as propriedades */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra interna para profundidade */
+}
+
+.input-1::placeholder { /* Estilizando o placeholder */
+    color: var(--text-gray);
+    opacity: 0.8;
+}
+
+.input-1:focus {
+    border-color: var(--accent-color); /* Borda de destaque ao focar */
+    box-shadow: 0 0 15px var(--accent-color); /* Brilho ao focar */
+    background-color: #38385a; /* Pequena mudança de cor ao focar */
+}
+
+.button-1 {
+    color: white;
+    background: linear-gradient(45deg, var(--accent-color), #f06a80); /* Gradiente no botão */
+    border-radius: 10px;
+    padding: 15px 30px; /* Padding maior para o botão */
+    border: none;
+    cursor: pointer;
+    font-size: 1.15em; /* Fonte maior no botão */
+    font-weight: 600; /* Mais negrito */
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra para o botão */
+    transition: all 0.3s ease; /* Transição para todas as propriedades */
+    text-transform: uppercase; /* Texto em maiúsculas */
+}
+
+.button-1:hover {
+    background: linear-gradient(45deg, #f06a80, var(--accent-color)); /* Inverte o gradiente no hover */
+    transform: translateY(-2px); /* Efeito de levantar */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Sombra maior */
+}
+
+.button-1:active {
+    transform: translateY(0); /* Volta à posição normal ao clicar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Sombra menor */
+    background: var(--accent-color); /* Fica com a cor principal ao clicar */
+}
+
+/* Animações Keyframes */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .h1-1 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    .section-1, .section-2 {
+        width: 95%; /* Ocupa mais largura em telas menores */
+    }
+
+    .section-1 {
+        height: 400px; /* Reduz a altura para telas menores */
+        padding: 15px;
+    }
+
+    .input-1, .button-1 {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+
+    .section-2 {
+        flex-direction: column; /* Empilha input e botão verticalmente */
+        gap: 10px;
+    }
+
+    .input-1 {
+        margin-right: 0; /* Remove a margem lateral */
+        width: 100%; /* Ocupa 100% da largura */
+    }
+
+    .button-1 {
+        width: 100%; /* Ocupa 100% da largura */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .h1-1 {
+        font-size: 1.8em;
+        letter-spacing: 1px;
+    }
+
+    .section-1 {
+        height: 350px;
+    }
+
+    .input-1, .button-1 {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+}

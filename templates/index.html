@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA BETA PRE ALPHA</title>
+    <!-- Links para fontes do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Link para o arquivo de estilo externo -->
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        /* Estilos para as mensagens flash, para que elas apareçam bem */
+        .flash-message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .flash-message.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        /* Ajuste para o container das mensagens flash */
+        .flash-messages-container {
+            margin-top: 25px; /* Espaçamento do input/botão */
+            width: 90%; /* Mesma largura das seções principais */
+            max-width: 700px;
+        }
+
+        /* Garante que o formulário ocupe a largura total dentro da section-2 */
+        .section-2 form {
+            width: 100%;
+            display: flex; /* Para alinhar input e botão */
+            gap: 15px; /* Espaçamento entre eles */
+        }
+
+        /* Responsividade para o formulário */
+        @media (max-width: 768px) {
+            .section-2 form {
+                flex-direction: column; /* Empilha input e botão verticalmente */
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Título principal da aplicação -->
+    <h1 class="h1-1">IA BETA PRE ALPHA</h1>
+    <main class="main-1">
+        <!-- Seção para a saída da IA -->
+        <section class="section-1">
+            <!-- Removido 'text-align: left;' para que o estilo do CSS externo centralize o texto -->
+            <div id="ia-output" style="color: white; padding: 20px; height: 100%; width: 100%; overflow-y: auto; box-sizing: border-box;">
+                {% if ai_response %}
+                    <!-- Exibe a resposta da IA se ela existir -->
+                    <p><strong>Resposta da IA:</strong> {{ ai_response }}</p>
+                {% else %}
+                    <!-- Mensagem inicial se não houver resposta da IA ainda -->
+                    Olá! Eu sou sua inteligência artificial. Como posso ajudar hoje?
+                {% endif %}
+            </div>
+        </section>
+    </main>
+    <!-- Seção para o input do usuário e botão de envio -->
+    <section class="section-2">
+        <!-- Formulário para enviar a pergunta para o Flask -->
+        <form action="/send_to_n8n" method="post">
+            <input
+                type="text"
+                class="input-1"
+                placeholder="Digite sua pergunta aqui..."
+                name="user_question" <!-- ESSENCIAL: nome para o Flask pegar o valor -->
+                required
+            >
+            <button type="submit" class="button-1">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Seção para exibir mensagens flash do Flask -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages-container">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
