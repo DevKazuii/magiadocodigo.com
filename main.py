@@ -91,4 +91,4 @@ def send_to_n8n():
 
 if __name__ == "__main__":
     # AVISO: Em produção, NUNCA use debug=True
-    app.run(debug=True)
+    app.run(debug=False)
